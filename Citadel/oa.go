@@ -18,15 +18,19 @@ func getMostVisited(m int, arr []int) int {
 			right = i
 		}
 
+		// Instead of increasing every portion of the array by 1 and get O(n^2),
+		// you increase the left most part of the array by 1 and decrease the
+		// right most part of the array that isn't in between the array so that only
+		// this segment will have it's value be the same as the leftmost with + 1 and
+		// - 1 for any start or end tracks covered.
+
 		array[left]++
 		array[right+1]--
-
 	}
 
 	max := 0
 	s := 0
 
-	// doesn't give the actual amount of times it reached at each location, but it is
 	for i := 0; i < len(array); i++ {
 		array[i] += s
 
